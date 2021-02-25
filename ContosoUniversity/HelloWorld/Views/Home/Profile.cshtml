@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+}
+
+@* Khai báo model từ Controller *@
+@model HelloWorld.Models.MessageModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Profile</title>
+</head>
+<body>
+    <div>
+        <h1>Chào mừng đến với ASP.NET MVC</h1>
+        <h1>@ViewBag.WelcomeString</h1>
+        @* @Model đại diện cho cả (@model HelloWorld.Models.MessageModel) được khai báo phía trên *@
+        <h1>@Model.WelcomeMessage</h1>
+    </div>
+</body>
+</html>
