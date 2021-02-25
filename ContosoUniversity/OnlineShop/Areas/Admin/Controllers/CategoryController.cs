@@ -1,5 +1,6 @@
 ﻿using OnlineShop.Areas.Admin.Models;
 using OnlineShop.Models;
+using OnlineShop.Models.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,11 +33,17 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         // POST: Admin/Category/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Category collection)
         {
+            // After clicked submit, this function will be called
             try
             {
                 // TODO: Add insert logic here
+
+                if( !ModelState.IsValid )
+                {
+                    throw new Exception();
+                }
 
                 return RedirectToAction("Index");
             }
