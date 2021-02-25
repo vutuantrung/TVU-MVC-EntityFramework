@@ -33,22 +33,32 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         // POST: Admin/Category/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Category collection)
         {
             // After clicked submit, this function will be called
             try
             {
                 // TODO: Add insert logic here
+                if( !ModelState.IsValid ) throw new Exception("Error occured when create new Category.");
 
-                if( !ModelState.IsValid )
-                {
-                    throw new Exception();
-                }
+                var model = new CategoryModel();
+                int insertedID = model.Create
+                (
+                    collection.Name,
+                    collection.Alias,
+                    collection.ParentID,
+                    collection.Order,
+                    collection.Status
+                );
+
+                if( insertedID <= 0 ) throw new Exception( "Error occured when create new Category." );
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
+                ModelState.AddModelError( "", ex.Message );
                 return View();
             }
         }
