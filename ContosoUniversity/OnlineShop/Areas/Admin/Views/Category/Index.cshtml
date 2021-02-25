@@ -30,24 +30,15 @@
                             <th>Status</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Created date</th>
-                            <th>Order</th>
-                            <th>Status</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         @foreach( var item in Model )
                         {
                             <tr>
                                 <td>@item.ID</td>
                                 <td>@item.Name</td>
-                                <td>@item.CreatedDate.HasValue ? @item.CreatedDate.Value.ToString("dd/MM/yyyy") : ""</td>
-                                <td>@item.Order.GetValueOrDefault(0)</td>
-                                <td>@item.Status ? "Active" : "Blocked"</td>
+                                <td>@(item.CreatedDate.HasValue ? @item.CreatedDate.Value.ToString("dd/MM/yyyy") : "")</td>
+                                <td class="center-block">@item.Order.GetValueOrDefault( 0 )</td>
+                                <td class="center-block">@(item.Status.GetValueOrDefault(false) ? "Active" : "Blocked")</td>
                             </tr>
                         }
                     </tbody>

@@ -9,11 +9,11 @@ namespace OnlineShop.Models
 {
     public class CategoryModel
     {
-        private readonly OnlineShopContextDB _context = null;
+        private readonly OnlineShopDbContext _context = null;
 
         public CategoryModel()
         {
-            _context = new OnlineShopContextDB();
+            _context = new OnlineShopDbContext();
         }
 
         public List<Category> ListAll()

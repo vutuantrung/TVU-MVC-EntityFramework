@@ -10,11 +10,11 @@ namespace OnlineShop.Models
 {
     public class AccountModel
     {
-        private readonly OnlineShopContextDB _context = null;
+        private readonly OnlineShopDbContext _context = null;
 
         public AccountModel()
         {
-            _context = new OnlineShopContextDB();
+            _context = new OnlineShopDbContext();
         }
 
         public bool Login( string userName, string password )

@@ -15,8 +15,8 @@ namespace OnlineShop.Models.Framework
         [StringLength(50)]
         public string Name { get; set; }
 
-        [MaxLength(50)]
-        public byte[] Alias { get; set; }
+        [StringLength(50)]
+        public string Alias { get; set; }
 
         public int? ParentID { get; set; }
 

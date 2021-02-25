@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace OnlineShop.Models.Framework
 {
-    public partial class OnlineShopContextDB : DbContext
+    public partial class OnlineShopDbContext : DbContext
     {
-        public OnlineShopContextDB()
+        public OnlineShopDbContext()
             : base( "name=OnlineShopDbContext" )
         {
             // Make sure that Entity instance copied
@@ -26,6 +26,10 @@ namespace OnlineShop.Models.Framework
 
             modelBuilder.Entity<Account>()
                 .Property( e => e.Password )
+                .IsUnicode( false );
+
+            modelBuilder.Entity<Category>()
+                .Property( e => e.Alias )
                 .IsUnicode( false );
 
             modelBuilder.Entity<Product>()
