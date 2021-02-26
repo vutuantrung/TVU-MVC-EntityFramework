@@ -34,9 +34,11 @@
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
+            @RenderSection( "topbar", required: true )
             @RenderBody()
+            @RenderSection( "footer", required: true )
         </div>
-
+        
     </div>
 
     <!-- Scroll to Top Button-->
