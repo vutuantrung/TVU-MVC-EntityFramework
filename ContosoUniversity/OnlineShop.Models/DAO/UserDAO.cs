@@ -30,5 +30,20 @@ namespace OnlineShop.Models.DAO
             var user = _context.Users.FirstOrDefault( x => x.UserName == userName && x.Password == password );
             return user;
         }
+
+        public User GetUser( string userName )
+        {
+            // Get user which matches with userName and password
+            var user = _context.Users.FirstOrDefault( x => x.UserName == userName );
+            return user;
+        }
+
+        public long CreateUser( User user )
+        {
+            _context.Users.Add( user );
+            _context.SaveChanges();
+
+            return user.ID;
+        }
     }
 }

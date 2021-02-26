@@ -1,8 +1,4 @@
-﻿@{ 
-    Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,11 +30,19 @@
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-            @RenderSection( "topbar", required: true )
+            @if( IsSectionDefined( "topbar" ) )
+            {
+                @RenderSection( "topbar", required: true )
+            }
+
             @RenderBody()
-            @RenderSection( "footer", required: true )
+
+            @if( IsSectionDefined( "footer" ) )
+            {
+                @RenderSection( "footer", required: true )
+            }
         </div>
-        
+
     </div>
 
     <!-- Scroll to Top Button-->
