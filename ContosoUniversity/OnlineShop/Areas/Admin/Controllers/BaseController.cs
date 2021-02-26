@@ -11,7 +11,7 @@ namespace OnlineShop.Areas.Admin.Controllers
     {
         protected override void OnActionExecuting( ActionExecutingContext filterContext )
         {
-            var session = (UserLogin)Session[ CommonConstants.USER_SESSION.ToString() ];
+            var session = Session[ CommonConstants.USER_SESSION.ToString() ];
             if( session == null )
             {
                 filterContext.Result = new RedirectToRouteResult(
