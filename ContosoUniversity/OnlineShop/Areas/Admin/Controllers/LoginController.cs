@@ -23,13 +23,17 @@ namespace OnlineShop.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult LoginMethod( LoginModel model )
+        public ActionResult LoginAction( LoginModel model )
         {
             try
             {
                 if( !ModelState.IsValid ) throw new Exception( "Login failed! Something went wrong." );
 
-                var user = _userDAO.GetUser( model.UserName, model.Password );
+                var user = _userDAO.GetUser
+                ( 
+                    model.UserName,
+                    Encryptor.MD5Hash( model.Password )
+                );
 
                 if( user == null ) throw new Exception( "Login failed! Please check your username or password." );
 
@@ -37,7 +41,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 Session.Add( CommonConstants.USER_SESSION.ToString(), user );
 
                 // Using ASP.NET validation
-                FormsAuthentication.SetAuthCookie( model.UserName, model.RememberMe );
+                // FormsAuthentication.SetAuthCookie( model.UserName, model.RememberMe );
 
                 return RedirectToAction( "Index", "Home" );
             }
@@ -47,31 +51,6 @@ namespace OnlineShop.Areas.Admin.Controllers
                 return View( "Index" );
             }
         }
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Index( LoginModel model )
-        //{
-        //    //var result = new AccountModel().Login( model.UserName, model.Password );
-        //    if( Membership.ValidateUser( model.UserName, model.Password )
-        //        && ModelState.IsValid )
-        //    {
-        //        // Using custom validation
-        //        //var userSession = new UserSession() { UserName = model.UserName };
-        //        //SessionHelper.SetSession( userSession );
-
-        //        // Using ASP.NET validation
-        //        FormsAuthentication.SetAuthCookie( model.UserName, model.RememberMe );
-
-        //        return RedirectToAction( "Index", "Home" );
-        //    }
-        //    else
-        //    {
-        //        ModelState.AddModelError( "", "Invalid username or password" );
-        //    }
-
-        //    return View( model );
-        //}
 
         public ActionResult Logout()
         {
