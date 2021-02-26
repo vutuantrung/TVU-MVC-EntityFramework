@@ -3,6 +3,7 @@
     Layout = null;
 }
 @model OnlineShop.Areas.Admin.Models.LoginModel
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,10 +45,10 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    @using( Html.BeginForm() )
+                                    @using( Html.BeginForm( "LoginMethod", "Login", FormMethod.Post ) )
                                     {
                                         @Html.AntiForgeryToken()
-                                        @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" } )
+                                        @Html.ValidationSummary( true, null, new { @class = "alert alert-danger" } )
                                         <fieldset>
                                             <div class="form-group">
                                                 @Html.TextBoxFor(

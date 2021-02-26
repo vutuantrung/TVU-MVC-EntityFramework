@@ -48,7 +48,8 @@ namespace OnlineShop.Areas.Admin.Code
         public override void UpdateUser( MembershipUser user ) => throw new NotImplementedException();
         public override bool ValidateUser( string username, string password )
         {
-            return new AccountModel().Login( username, password );
+            //return new AccountModel().Login( username, password );
+            throw new NotImplementedException();
         }
     }
 }
