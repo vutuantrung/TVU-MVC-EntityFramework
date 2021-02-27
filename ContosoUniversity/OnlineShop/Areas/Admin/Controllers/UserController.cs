@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using PagedList;
 using OnlineShop.Areas.Admin.Code;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
@@ -25,6 +26,8 @@ namespace OnlineShop.Areas.Admin.Controllers
         // GET: Admin/User
         public ActionResult Index()
         {
+            var webconfigValue = ConfigurationManager.AppSettings[ "testingValueFromWebConfig" ];
+
             // Get username of the current user
             var userSession = GetSessionUser();
 
