@@ -50,8 +50,9 @@
                                 @(user.Status == true ? "Active" : "Inactive")
                             </td>
                             <td>
-                                <a href="User/Edit/@user.ID">Edit</a>
-                                <a href="User/Delete/@user.ID">Remove</a>
+                                <a href="/Admin/User/Edit/@user.ID">Edit</a>
+                                |
+                                <a href="/User/Delete/@user.ID">Remove</a>
                             </td>
                         </tr>
                     }

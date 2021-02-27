@@ -1,32 +1,27 @@
 ﻿@model OnlineShop.Models.EF.User
 
 @{
-    ViewBag.Title = "Create new user";
+    ViewBag.Title = "Edit user";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 
-@using( Html.BeginForm( "CreateUserAction", "User", FormMethod.Post ) )
+@using( Html.BeginForm( "EditUserAction", "User", FormMethod.Post ) )
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary( true, "", new { @class = "text-danger" } )
 
+    @Html.HiddenFor( model => model.ID )
+
     <div class="form-row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="form-group col-md-12">
                 @Html.LabelFor( model => model.UserName )
                 @Html.EditorFor( model => model.UserName, new { htmlAttributes = new { @class = "form-control" } } )
                 @Html.ValidationMessageFor( model => model.UserName, "", new { @class = "text-danger" } )
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="form-group col-md-12">
-                @Html.LabelFor( model => model.Password )
-                @Html.EditorFor( model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } } )
-                @Html.ValidationMessageFor( model => model.Password, "", new { @class = "text-danger" } )
-            </div>
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="form-group col-md-12">
                 @Html.LabelFor( model => model.Status )
                 @Html.EditorFor( model => model.Status, new { htmlAttributes = new { @class = "form-control" } } )
@@ -74,7 +69,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Update" class="btn btn-default" />
         </div>
     </div>
 }

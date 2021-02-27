@@ -25,17 +25,40 @@ namespace OnlineShop.Models.DAO
             return user.ID;
         }
 
-        public User GetUser( string userName, string password )
+        /// <summary>
+        /// Find user by username and password
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public User FindUser( string userName, string password )
         {
             // Get user which matches with userName and password
             var user = _context.Users.FirstOrDefault( x => x.UserName == userName && x.Password == password );
             return user;
         }
 
-        public User GetUser( string userName )
+        /// <summary>
+        /// Find user by username
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public User FindUser( string userName )
         {
             // Get user which matches with userName and password
             var user = _context.Users.FirstOrDefault( x => x.UserName == userName );
+            return user;
+        }
+
+        /// <summary>
+        /// Find user by ID
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public User FindUser( long userID )
+        {
+            // Get user which matches with userName and password
+            var user = _context.Users.FirstOrDefault( x => x.ID == userID );
             return user;
         }
 
@@ -57,6 +80,25 @@ namespace OnlineShop.Models.DAO
         public IEnumerable<User> GetAllUsers()
         {
             return _context.Users;
+        }
+
+        public IEnumerable<User> GetAllOthersUser( string userName )
+        {
+            var users = _context.Users.Where( user => user.UserName != userName );
+            return users;
+        }
+
+        public void UpdateUser( User user )
+        {
+            var existingUser = FindUser( user.ID );
+            existingUser.UserName = user.UserName;
+            existingUser.Name = user.Name;
+            existingUser.Address = user.Address;
+            existingUser.Email = user.Email;
+            existingUser.Phone = user.Phone;
+            existingUser.ModifiedBy = user.ModifiedBy;
+            existingUser.ModifedDate = user.ModifedDate;
+            _context.SaveChanges();
         }
     }
 }

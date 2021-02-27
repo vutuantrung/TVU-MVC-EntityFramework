@@ -29,7 +29,7 @@ namespace OnlineShop.Areas.Admin.Controllers
             {
                 if( !ModelState.IsValid ) throw new Exception( "Login failed! Something went wrong." );
 
-                var user = _userDAO.GetUser
+                var user = _userDAO.FindUser
                 ( 
                     model.UserName,
                     Encryptor.MD5Hash( model.Password )

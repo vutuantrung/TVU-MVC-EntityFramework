@@ -1,4 +1,5 @@
 ﻿using OnlineShop.Common;
+using OnlineShop.Models.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace OnlineShop.Areas.Admin.Controllers
     {
         protected override void OnActionExecuting( ActionExecutingContext filterContext )
         {
-            var session = Session[ CommonConstants.USER_SESSION.ToString() ];
+            var session = GetSessionUser();
             if( session == null )
             {
                 filterContext.Result = new RedirectToRouteResult(
@@ -25,6 +26,12 @@ namespace OnlineShop.Areas.Admin.Controllers
             }
 
             base.OnActionExecuting( filterContext );
+        }
+
+        protected User GetSessionUser()
+        {
+            var session = Session[ CommonConstants.USER_SESSION.ToString() ];
+            return session == null ? null : (User)session;
         }
     }
 }
