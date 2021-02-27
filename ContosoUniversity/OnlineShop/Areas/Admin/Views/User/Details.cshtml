@@ -11,7 +11,7 @@
     <div class="col-md-4">
         @Html.LabelFor( model => model.Avatar )
         <div id="profileAvatar">
-            <img src="@Url.Content("../../../assets/admin/img/avatars/" + Model.Avatar + ".jpg")" alt="Image" style="width: 100%; border-radius: 10px;" />
+            <img src="@Url.Content("../../../assets/admin/img/avatars/" + (string.IsNullOrEmpty(Model.Avatar) ? "default" : Model.Avatar)  + ".jpg")" alt="Image" style="width: 100%; border-radius: 10px;" />
         </div>
     </div>
     <div class="col-md-8">

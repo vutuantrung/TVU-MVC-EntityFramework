@@ -12,6 +12,12 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
+    public class Nationality
+    {
+        public int ID { get; set; }
+        public string Nation { get; set; }
+    }
+
     public class UserController : BaseController
     {
         private readonly UserDAO _userContext = new UserDAO();
@@ -28,6 +34,8 @@ namespace OnlineShop.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            SetViewBag();
+
             return View();
         }
 
@@ -63,6 +71,8 @@ namespace OnlineShop.Areas.Admin.Controllers
         public ActionResult Edit( int id )
         {
             var user = _userContext.FindUser( id );
+
+            SetViewBag( user.Nationality );
 
             return View( user );
         }
@@ -100,6 +110,16 @@ namespace OnlineShop.Areas.Admin.Controllers
             var user = _userContext.FindUser( id );
 
             return View( user );
+        }
+
+        public void SetViewBag( string selectedValue = null )
+        {
+            List<Nationality> nations = new List<Nationality>();
+            nations.Add( new Nationality { Nation = "VietNamese" } );
+            nations.Add( new Nationality { Nation = "Japanese" } );
+            nations.Add( new Nationality { Nation = "Thailand" } );
+
+            ViewBag.Nationality = new SelectList( nations, "Nation", "Nation", selectedValue );
         }
     }
 }

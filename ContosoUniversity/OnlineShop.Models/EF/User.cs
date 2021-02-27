@@ -48,7 +48,10 @@ namespace OnlineShop.Models.EF
         [Display( Name = "Status" )]
         public bool? Status { get; set; }
 
-        [StringLength(50)]
+        [StringLength( 50 )]
         public string Avatar { get; set; }
+
+        [StringLength(50)]
+        public string Nationality { get; set; }
     }
 }

@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
-    public class CategoryController : Controller
+    public class ContentController : Controller
     {
-        // GET: Admin/Category
+        // GET: Admin/Content
         public ActionResult Index()
         {
             return View();

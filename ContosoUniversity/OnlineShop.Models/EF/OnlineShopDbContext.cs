@@ -152,6 +152,10 @@ namespace OnlineShop.Models.EF
             modelBuilder.Entity<User>()
                 .Property( e => e.ModifiedBy )
                 .IsUnicode( false );
+
+            modelBuilder.Entity<User>()
+                .Property( e => e.Nationality )
+                .IsUnicode( false );
         }
     }
 }
