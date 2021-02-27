@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
@@ -16,7 +17,8 @@ namespace OnlineShop.Areas.Admin.Controllers
         // GET: Admin/User
         public ActionResult Index()
         {
-            return View();
+            var model = _userContext.GetAllUsers();
+            return View( model );
         }
 
         public ActionResult CreateUserAction( User user )

@@ -1,80 +1,75 @@
-﻿@model OnlineShop.Models.EF.User
-
+﻿@model IEnumerable<OnlineShop.Models.EF.User>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "User";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">User Table</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone number</th>
+                        <th>Created date</th>
+                        <th>Created by</th>
+                        <th>Status</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach( var user in Model )
+                    {
+                        <tr>
+                            <td>
+                                @user.UserName
+                            </td>
+                            <td>
+                                @user.Name
+                            </td>
+                            <td>
+                                @user.Email
+                            </td>
+                            <td>
+                                @user.Phone
+                            </td>
+                            <td>
+                                @user.CreatedDate
+                            </td>
+                            <td>
+                                @user.CreatedBy
+                            </td>
+                            <td>
+                                @(user.Status == true ? "Active" : "Inactive")
+                            </td>
+                            <td>
+                                <a href="User/Edit/@user.ID">Edit</a>
+                                <a href="User/Delete/@user.ID">Remove</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
-@using( Html.BeginForm( "CreateUserAction", "User", FormMethod.Post ) )
+@section CSSLinks
 {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary( true, "", new { @class = "text-danger" } )
+    <!-- Custom styles for this page -->
+    <link href="~/Assets/Admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-    <div class="form-row">
-        <div class="col-md-4">
-            <div class="form-group col-md-12">
-                @Html.LabelFor( model => model.UserName )
-                @Html.EditorFor( model => model.UserName, new { htmlAttributes = new { @class = "form-control" } } )
-                @Html.ValidationMessageFor( model => model.UserName, "", new { @class = "text-danger" } )
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group col-md-12">
-                @Html.LabelFor( model => model.Password )
-                @Html.EditorFor( model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } } )
-                @Html.ValidationMessageFor( model => model.Password, "", new { @class = "text-danger" } )
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group col-md-12">
-                @Html.LabelFor( model => model.Status )
-                @Html.EditorFor( model => model.Status, new { htmlAttributes = new { @class = "form-control" } } )
-                @Html.ValidationMessageFor( model => model.Status, "", new { @class = "text-danger" } )
-            </div>
-        </div>
-    </div>
+    <!-- Page level plugins -->
+    <script src="~/Assets/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <div class="form-row">
-        <div class="col-md-12">
-            <div class="form-group col-md-12">
-                @Html.LabelFor( model => model.Name )
-                @Html.EditorFor( model => model.Name, new { htmlAttributes = new { @class = "form-control" } } )
-                @Html.ValidationMessageFor( model => model.Name, "", new { @class = "text-danger" } )
-            </div>
-        </div>
-    </div>
-
-    <div class="form-row">
-        <div class="col-md-12">
-            <div class="form-group col-md-12">
-                @Html.LabelFor( model => model.Address )
-                @Html.EditorFor( model => model.Address, new { htmlAttributes = new { @class = "form-control" } } )
-                @Html.ValidationMessageFor( model => model.Address, "", new { @class = "text-danger" } )
-            </div>
-        </div>
-    </div>
-
-    <div class="form-row">
-        <div class="col-md-6">
-            <div class="form-group col-md-12">
-                @Html.LabelFor( model => model.Email )
-                @Html.EditorFor( model => model.Email, new { htmlAttributes = new { @class = "form-control" } } )
-                @Html.ValidationMessageFor( model => model.Email, "", new { @class = "text-danger" } )
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group col-md-12">
-                @Html.LabelFor( model => model.Phone )
-                @Html.EditorFor( model => model.Phone, new { htmlAttributes = new { @class = "form-control" } } )
-                @Html.ValidationMessageFor( model => model.Phone, "", new { @class = "text-danger" } )
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
+    <!-- Page level custom scripts -->
+    <script src="~/Assets/Admin/js/demo/datatables-demo.js"></script>
 }

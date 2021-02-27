@@ -1,4 +1,5 @@
 ﻿using OnlineShop.Models.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,18 @@ namespace OnlineShop.Models.DAO
             _context.SaveChanges();
 
             return user.ID;
+        }
+
+        public IEnumerable<User> GetAllUsersByPage( int page, int pageSize )
+        {
+            return _context.Users
+                .OrderByDescending( x => x.CreatedDate )
+                .ToPagedList( page, pageSize );
+        }
+
+        public IEnumerable<User> GetAllUsers()
+        {
+            return _context.Users;
         }
     }
 }
