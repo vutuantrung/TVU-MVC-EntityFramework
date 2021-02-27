@@ -24,6 +24,13 @@
     <!-- Custom styles for this template-->
     <link href="~/Assets/Admin/css/sb-admin-2.css" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="~/Assets/Admin/js/custom-sb-admin-2.js"></script>
+    <script>
+        $(document).ready(function () {
+            getRandomLoginImage(1, 16);
+        });
+    </script>
 </head>
 
 <body class="bg-gradient-primary">
@@ -39,7 +46,7 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div id="loginImage" class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
