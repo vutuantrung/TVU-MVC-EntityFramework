@@ -70,13 +70,6 @@ namespace OnlineShop.Models.DAO
             return user.ID;
         }
 
-        public IEnumerable<User> GetAllUsersByPage( int page, int pageSize )
-        {
-            return _context.Users
-                .OrderByDescending( x => x.CreatedDate )
-                .ToPagedList( page, pageSize );
-        }
-
         public IEnumerable<User> GetAllUsers()
         {
             return _context.Users;
@@ -98,6 +91,13 @@ namespace OnlineShop.Models.DAO
             existingUser.Phone = user.Phone;
             existingUser.ModifiedBy = user.ModifiedBy;
             existingUser.ModifedDate = user.ModifedDate;
+            _context.SaveChanges();
+        }
+
+        public void DeleteUser( int userID )
+        {
+            var deletingUser = _context.Users.Find( userID );
+            _context.Users.Remove( deletingUser );
             _context.SaveChanges();
         }
     }

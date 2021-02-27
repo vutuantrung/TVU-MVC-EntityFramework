@@ -6,7 +6,7 @@ namespace OnlineShop.Models.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table( "User" )]
+    [Table("User")]
     public partial class User
     {
         public long ID { get; set; }
@@ -47,5 +47,8 @@ namespace OnlineShop.Models.EF
 
         [Display( Name = "Status" )]
         public bool? Status { get; set; }
+
+        [StringLength(50)]
+        public string Avatar { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using OnlineShop.Areas.Admin.Code;
+using System.Threading.Tasks;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
@@ -85,6 +86,20 @@ namespace OnlineShop.Areas.Admin.Controllers
             }
 
             return View();
+        }
+
+        public ActionResult Delete( int id )
+        {
+            _userContext.DeleteUser( id );
+
+            return RedirectToAction( "Index", "User" );
+        }
+
+        public ActionResult Details( int id )
+        {
+            var user = _userContext.FindUser( id );
+
+            return View( user );
         }
     }
 }

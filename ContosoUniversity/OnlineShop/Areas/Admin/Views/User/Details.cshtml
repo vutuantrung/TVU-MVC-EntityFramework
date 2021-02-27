@@ -1,0 +1,68 @@
+﻿@model OnlineShop.Models.EF.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User details</h2>
+
+<div class="form-row">
+    <div class="col-md-4">
+        @Html.LabelFor( model => model.Avatar )
+        <div id="profileAvatar">
+            <img src="@Url.Content("../../../assets/admin/img/avatars/" + Model.Avatar + ".jpg")" alt="Image" style="width: 100%; border-radius: 10px;" />
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="form-row">
+            <div class="col-md-12">
+                <div class="form-group col-md-12">
+                    @Html.LabelFor( model => model.Name )
+                    @Html.EditorFor( model => model.Name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } } )
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6">
+                <div class="form-group col-md-12">
+                    @Html.LabelFor( model => model.UserName )
+                    @Html.EditorFor( model => model.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } } )
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group col-md-12">
+                    @Html.LabelFor( model => model.Status )
+                    @Html.EditorFor( model => model.Status, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } } )
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12">
+                <div class="form-group col-md-12">
+                    @Html.LabelFor( model => model.Address )
+                    @Html.EditorFor( model => model.Address, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } } )
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6">
+                <div class="form-group col-md-12">
+                    @Html.LabelFor( model => model.Email )
+                    @Html.EditorFor( model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } } )
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group col-md-12">
+                    @Html.LabelFor( model => model.Phone )
+                    @Html.EditorFor( model => model.Phone, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } } )
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink( "Back to List", "Index" )
+</p>

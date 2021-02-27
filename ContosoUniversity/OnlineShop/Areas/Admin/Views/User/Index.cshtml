@@ -50,9 +50,11 @@
                                 @(user.Status == true ? "Active" : "Inactive")
                             </td>
                             <td>
+                                <a href="/Admin/User/Details/@user.ID">Details</a>
+                                |
                                 <a href="/Admin/User/Edit/@user.ID">Edit</a>
                                 |
-                                <a href="/User/Delete/@user.ID">Remove</a>
+                                @Html.ActionLink( "Remove", "Delete", new { id = user.ID } )
                             </td>
                         </tr>
                     }

@@ -154,6 +154,20 @@
   <ItemGroup>
     <Content Include="Assets\Admin\css\sb-admin-2.css" />
     <Content Include="Assets\Admin\css\sb-admin-2.min.css" />
+    <Content Include="Assets\Admin\img\avatars\avatar_0.jpg" />
+    <Content Include="Assets\Admin\img\avatars\avatar_1.jpg" />
+    <Content Include="Assets\Admin\img\avatars\avatar_10.jpg" />
+    <Content Include="Assets\Admin\img\avatars\avatar_11.jpg" />
+    <Content Include="Assets\Admin\img\avatars\avatar_12.jpg" />
+    <Content Include="Assets\Admin\img\avatars\avatar_2.jpg" />
+    <Content Include="Assets\Admin\img\avatars\avatar_3.jpg" />
+    <Content Include="Assets\Admin\img\avatars\avatar_4.jpg" />
+    <Content Include="Assets\Admin\img\avatars\avatar_5.jpg" />
+    <Content Include="Assets\Admin\img\avatars\avatar_6.jpg" />
+    <Content Include="Assets\Admin\img\avatars\avatar_7.jpg" />
+    <Content Include="Assets\Admin\img\avatars\avatar_8.jpg" />
+    <Content Include="Assets\Admin\img\avatars\avatar_9.jpg" />
+    <Content Include="Assets\Admin\img\avatars\default.jpg" />
     <Content Include="Assets\Admin\img\logImages\loginImg_1.jpg" />
     <Content Include="Assets\Admin\img\logImages\loginImg_10.jpg" />
     <Content Include="Assets\Admin\img\logImages\loginImg_11.jpg" />
@@ -2046,6 +2060,7 @@
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\Create.cshtml" />
     <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Details.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
