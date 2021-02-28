@@ -34,8 +34,13 @@ namespace OnlineShop.Areas.Admin.Controllers
             return session == null ? null : (User)session;
         }
 
-        protected void SetAlert( string message, string type )
+        protected void SetAlert( string message, AlertType type )
         {
+            TempData[ "AlertMessage" ] = message;
+            if( type == AlertType.Success ) TempData[ "AlertType" ] = "alert-success";
+            else if( type == AlertType.Warning ) TempData[ "AlertType" ] = "alert-warning";
+            else TempData[ "AlertType" ] = "alert-danger";
+
         }
     }
 }

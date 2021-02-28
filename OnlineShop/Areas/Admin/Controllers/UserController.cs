@@ -65,6 +65,9 @@ namespace OnlineShop.Areas.Admin.Controllers
 
                 // 4. Insert if not exist
                 var lastInsertedID = _userContext.CreateUser( user );
+
+                SetAlert( "User created succesfully.", AlertType.Success );
+
                 return RedirectToAction( "Index", "User" );
             }
 
@@ -95,6 +98,8 @@ namespace OnlineShop.Areas.Admin.Controllers
                 // 2. Update db
                 _userContext.UpdateUser( user );
 
+                SetAlert( "User changed succesfully.", AlertType.Success );
+
                 return RedirectToAction( "Index", "User" );
             }
 
@@ -104,6 +109,8 @@ namespace OnlineShop.Areas.Admin.Controllers
         public ActionResult Delete( int id )
         {
             _userContext.DeleteUser( id );
+
+            SetAlert( "User removed succesfully.", AlertType.Success );
 
             return RedirectToAction( "Index", "User" );
         }

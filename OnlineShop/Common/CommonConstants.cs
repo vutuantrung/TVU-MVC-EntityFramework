@@ -9,4 +9,11 @@ namespace OnlineShop.Common
     {
         USER_SESSION
     }
+
+    public enum AlertType
+    {
+        Success,
+        Warning,
+        Error
+    }
 }
