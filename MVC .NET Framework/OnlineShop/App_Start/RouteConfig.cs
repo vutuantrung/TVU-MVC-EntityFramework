@@ -13,6 +13,7 @@ namespace OnlineShop
         {
             routes.IgnoreRoute( "{resource}.axd/{*pathInfo}" );
 
+            // Phai dat duoi cung vi no se chay het nhung trong hop phia tren. Neu khoong tim thay, no se truy cap vao duong link nay
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
