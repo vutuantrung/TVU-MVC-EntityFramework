@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace eShopSolution.Data.Entities
 {
@@ -22,5 +19,10 @@ namespace eShopSolution.Data.Entities
 
         public string SeoAlias { get; set; }
 
+        public List<ProductInCategory> ProductInCategories { get; set; }
+
+        public List<OrderDetail> OrderDetails { get; set; }
+
+        public List<ProductTranslation> ProductTranslations { get; set; }
     }
 }
