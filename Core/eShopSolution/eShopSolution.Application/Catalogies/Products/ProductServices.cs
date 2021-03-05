@@ -3,6 +3,7 @@ using eShopSolution.ViewModels.Catalog.Products;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace eShopSolution.Application.Catalogies.Products
 {
@@ -15,22 +16,22 @@ namespace eShopSolution.Application.Catalogies.Products
             _context = context;
         }
 
-        public int Create( ProductCreateRequest request )
+        public async Task<int> Create( ProductCreateRequest request )
         {
             throw new NotImplementedException();
         }
 
-        public int Delete( int id )
+        public async Task<int> Delete( int id )
         {
             throw new NotImplementedException();
         }
 
-        public List<ProductViewModel> GetAll()
+        public async Task<List<ProductViewModel>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public int Update( ProductUpdateRequest request )
+        public async Task<int> Update( ProductUpdateRequest request )
         {
             throw new NotImplementedException();
         }

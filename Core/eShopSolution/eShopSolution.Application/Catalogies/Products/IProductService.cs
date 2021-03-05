@@ -2,17 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace eShopSolution.Application.Catalogies.Products
 {
     interface IProductService
     {
-        int Create( ProductCreateRequest request );
+        Task<int> Create( ProductCreateRequest request );
 
-        int Update( ProductUpdateRequest request );
+        Task<int> Update( ProductUpdateRequest request );
 
-        int Delete( int id );
+        Task<int> Delete( int id );
 
-        List<ProductViewModel> GetAll();
+        Task<List<ProductViewModel>> GetAll();
     }
 }
