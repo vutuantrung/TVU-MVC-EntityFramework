@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eShopSolution.Application.Catalogies.Products
 {
-    interface IProductService
+    public interface IProductService
     {
         Task<int> Create( ProductCreateRequest request );
 

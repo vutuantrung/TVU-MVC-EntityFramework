@@ -65,7 +65,24 @@ namespace eShopSolution.Application.Catalogies.Products
 
         public async Task<List<ProductViewModel>> GetAll()
         {
-            throw new NotImplementedException();
+            var result = new List<ProductViewModel>();
+            var data = await _context.Products.ToListAsync();
+
+            foreach( var product in data )
+            {
+                result.Add( new ProductViewModel()
+                {
+                    Id = product.Id,
+                    Price = product.Price,
+                    OriginalPrice = product.OriginalPrice,
+                    Stock = product.Stock,
+                    ViewCount = product.ViewCount,
+                    DateCreated = product.CreatedDate,
+                    SeoAlias = product.SeoAlias,
+                } );
+            }
+
+            return result;
         }
 
         public async Task<int> Update( ProductUpdateRequest request )
